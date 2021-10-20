@@ -1,6 +1,7 @@
 package org.broken;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import javax.inject.Inject;
 
@@ -12,7 +13,7 @@ import io.quarkus.test.junit.QuarkusMock;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class InjectionTestUsingInject {
+public class InjectionTestUsingInjectUsingMock {
 
 	@Inject
 	MainResource mainResource;
@@ -20,6 +21,7 @@ public class InjectionTestUsingInject {
 	@BeforeAll
 	public static void beforeAll() {
 		MainResource mock = Mockito.mock(MainResource.class);
+		when(mock.callToInjectedBean()).thenCallRealMethod();
 		QuarkusMock.installMockForType(mock, MainResource.class);
 	}
 

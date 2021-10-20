@@ -7,7 +7,7 @@ import javax.inject.Inject;
 public class MainResource {
 
 	@Inject
-	InjectedResource injectedResource;
+	public InjectedResource injectedResource;
 
 	public String callToInjectedBean() {
 		return injectedResource.injectedFunction();
